@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Задача{% endblock %}
+{% block menu %}
+    <a href="{% url 'product_add' %}">Добавить</a>
+    <a href="{% url 'product_update' product.pk%}">Обновить</a>
+    <a href="{% url 'product_delete' product.pk%}">Удалить</a>
+    <a href="{% url 'basket_add' %}">Добавить в корзину</a>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Продукт</h1>
+        <p>Название: {{ product.title }}</p>
+        <p>Описание: {{ product.description }}</p>
+        <p>Категория: {{ product.category }}</p>
+        <p>Остаток: {{ product.count }}</p>
+        <p>Цена: {{ product.price }}</p>
+        <img src="{{ product.photo }}" alt="product_photo">
+    </div>
+    <a href="">Добавить в корзину</a>
+{% endblock %}
