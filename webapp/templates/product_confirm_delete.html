@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Удаление{% endblock %}
+{% block menu %}
+    <a href="{% url 'product_add' %}">Добавить</a>
+    <a href="{% url 'product_update' product.pk %}">Обновить</a>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Вы точно хотите удалить продукт?</h1>
+        <p>Название: {{ product.title }}</p>
+        <p>Описание: {{ product.description }}</p>
+        <form action="{% url 'product_confirm_delete' product.pk%}" method="post">
+            {% csrf_token %}
+            <p><input type="submit" value="Удалить"></p>
+            <p><a href="{% url 'index' %}">Отмена</a></p>
+        </form>
+    </div>
+{% endblock %}
