@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Удаление{% endblock %}
+{% block menu %}
+    <a href="{% url 'basket_add' %}">Добавить</a>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1>Вы точно хотите удалить продукт из корзины?</h1>
+        <p>Описание: {{ basket.product }}</p>
+        <form action="{% url 'basket_confirm_delete' basket.pk%}" method="post">
+            {% csrf_token %}
+            <p><input type="submit" value="Удалить"></p>
+            <p><a href="{% url 'basket_index' %}">Отмена</a></p>
+        </form>
+    </div>
+{% endblock %}
